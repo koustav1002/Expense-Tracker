@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.inputStyles {
+  @apply bg-transparent appearance-none border border-gray-300 w-full py-2 px-3 text-gray-700 outline-none focus:ring-1 ring-blue-500;
+}
+
+.labelStyles {
+  @apply block text-gray-700 text-sm md:text-base mb-2;
+}
+
+.inputStyle {
+  @apply w-full text-sm border;
+}
+
+:root {
+  --theme: #2970ff;
+  --black: #000;
+  --white: #fff;
+  --shadow-color: 0px 0px 30px 8px rgba(227, 227, 227, 0.75);
+  --dark-mode: #18191a;
+}
+
+body {
+  font-family: Poppins;
+  /* background-color: #18191a; */
+}
