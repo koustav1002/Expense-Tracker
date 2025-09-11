@@ -31,7 +31,6 @@ const RootLayout = () => {
   );
 };
 
-
 function App() {
   return (
     <BrowserRouter>
