@@ -51,7 +51,7 @@ const signinUser = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        msg: "User not found!",
+        message: "User not found!",
       });
     }
 
@@ -60,7 +60,7 @@ const signinUser = async (req, res) => {
     if (!isMatch) {
       return res.status(404).json({
         status: "failed",
-        msg: "Invalid email!!",
+        message: "Invalid password!!",
       });
     }
 
@@ -70,7 +70,7 @@ const signinUser = async (req, res) => {
 
     res.status(201).json({
       status: "success",
-      msg: "Login successfull!",
+      message: "Login successfull!",
       user,
       token,
     });

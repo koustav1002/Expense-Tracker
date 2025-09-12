@@ -99,8 +99,6 @@ const updateUser = async (req, res) => {
         $set: {
           firstName: firstname,
           lastName: lastname,
-          country: country,
-          currency: currency,
           contact: contact,
         },
       }

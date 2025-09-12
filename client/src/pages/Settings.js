@@ -20,7 +20,7 @@ const Settings = () => {
 
           <div className="flex items-center gap-4 my-8">
             <div className="flex items-center justify-center font-bold w-12 h-12 text-white rounded-full cursor-pointer bg-violet-600 ">
-              <p>{user?.firstName.charAt(0)}</p>
+              <p>{user?.firstName?.charAt(0)}</p>
             </div>
             <p className="text-2xl font-semibold text-black">
               {user?.firstName}
@@ -28,7 +28,7 @@ const Settings = () => {
           </div>
           <SettingsForm />
 
-          {!user?.provided && <ChangePassword/>}
+          {!user?.provided && <ChangePassword />}
         </div>
       </div>
     </div>
