@@ -14,12 +14,26 @@ import Settings from "./pages/Settings";
 import AccountPage from "./pages/AccountPage";
 import useStore from "./store/index";
 import Navbar from "./components/Navbar";
+import { jwtDecode } from "jwt-decode";
 
 const RootLayout = () => {
-  // const { user } = useStore((state) => state);
-  const user = useStore((state) => state);
+  const { user } = useStore((state) => state);
 
-  return !user ? (
+  const token = localStorage.getItem("token");
+
+  let isValid = false;
+
+  if (token) {
+    try {
+      const decoded = jwtDecode(token.split(" ")[1]); // remove "Bearer "
+      const now = Date.now() / 1000;
+      isValid = decoded.exp > now;
+    } catch (err) {
+      console.error("Invalid token", err);
+    }
+  }
+
+  return !user || !isValid ? (
     <Navigate to="/sign-in" replace={true} />
   ) : (
     <>

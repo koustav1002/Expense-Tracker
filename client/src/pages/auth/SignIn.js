@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useStore from "../../store";
 
 function SignIn() {
+  const { setUser } = useStore((state) => state);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,6 +38,8 @@ function SignIn() {
       // Save token and user in localStorage
       localStorage.setItem("token", `Bearer ${data.token}`);
       localStorage.setItem("user", JSON.stringify(data.user));
+
+      setUser(data.user);
 
       // Redirect to dashboard
       navigate("/overview");
@@ -91,11 +96,10 @@ function SignIn() {
           <button
             type="submit"
             disabled={loading}
-            className={`${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-[rgb(91,33,182)] hover:bg-[rgb(43,14,80)]"
-            } text-white py-2 px-4 rounded w-full mt-[15px]`}
+            className={`${loading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-[rgb(91,33,182)] hover:bg-[rgb(43,14,80)]"
+              } text-white py-2 px-4 rounded w-full mt-[15px]`}
           >
             {loading ? "Logging in..." : "Log In"}
           </button>

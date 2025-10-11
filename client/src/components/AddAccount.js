@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useStore from "../store";
 import { generateAccountNumber, getAccessToken } from "../store/utils";
 import { useForm } from "react-hook-form";
@@ -23,7 +23,7 @@ const AddAccount = ({ isOpen, setIsOpen, id, refetch, key }) => {
     defaultValues: { account_number: generateAccountNumber() },
   });
 
-  const [selectedAccount, setSelectedAccount] = useState(accounts[0]);
+  const [selectedAccount, setSelectedAccount] = useState();
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
@@ -57,6 +57,10 @@ const AddAccount = ({ isOpen, setIsOpen, id, refetch, key }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    setSelectedAccount(accounts[0] ?? "None");
+  }, []);
   return (
     <DialogWrapper isOpen={isOpen} closeModal={closeModal}>
       <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">

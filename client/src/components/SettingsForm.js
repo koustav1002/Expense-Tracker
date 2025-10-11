@@ -9,13 +9,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 const SettingsForm = () => {
-  const { user } = useStore((state) => state);
+  const { user, setUser } = useStore((state) => state);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch,
+    formState: { errors }
   } = useForm();
 
   const [selectedCountry, setSelectedCountry] = useState(
@@ -41,8 +40,10 @@ const SettingsForm = () => {
       const { data: res } = await axios.put(URL, values, config);
 
       if (res?.user) {
-        const newUser = { ...res.user, token: user.token };
+        const token = user.token;
+        const newUser = { ...res.user, token: token };
         localStorage.setItem("user", JSON.stringify(newUser));
+        setUser(newUser);
 
         toast.success(res?.message ?? "Updated user information successfully!");
       }

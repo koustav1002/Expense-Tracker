@@ -91,19 +91,22 @@ const updateUser = async (req, res) => {
         .json({ status: "failed", message: "User not found." });
     }
 
-    const { firstname, lastname, country, currency, contact } = req.body;
+    const { firstname, lastname, country, currency, contact, email } = req.body;
 
-    const updatedUser = await User.updateOne(
+    // TODO:- Make sure to update the other fields too after basic app structure is complete... like country, currency, etc..
+    await User.updateOne(
       { _id: userId },
       {
         $set: {
           firstName: firstname,
           lastName: lastname,
+          email: email,
           contact: contact,
         },
       }
     );
 
+    const updatedUser = await User.findById(userId);
     updatedUser.password = undefined;
 
     res.status(200).json({

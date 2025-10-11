@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
+import useStore from "../store";
 
 const UserDropdown = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const { user, signOut } = useStore((state) => state);
 
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -36,6 +37,7 @@ const UserDropdown = () => {
     e.preventDefault();
 
     localStorage.clear();
+    signOut();
     navigate("/sign-in");
   };
 
