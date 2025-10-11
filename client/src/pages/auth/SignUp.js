@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useStore from "../../store";
 
 function SignUp() {
+  const { setUser } = useStore((state) => state);
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState(""); // Will split into first & last name
   const [password, setPassword] = useState("");
@@ -38,6 +41,8 @@ function SignUp() {
       // Store JWT token and user data in localStorage
       localStorage.setItem("token", `Bearer ${data.token}`);
       localStorage.setItem("user", JSON.stringify(data.user));
+
+      setUser(data.user);
 
       // Redirect to dashboard or overview
       navigate("/overview");
@@ -109,11 +114,10 @@ function SignUp() {
           <button
             type="submit"
             disabled={loading}
-            className={`${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-[rgb(91,33,182)] hover:bg-[rgb(43,14,80)]"
-            } text-white py-2 px-4 rounded w-full mt-[15px]`}
+            className={`${loading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-[rgb(91,33,182)] hover:bg-[rgb(43,14,80)]"
+              } text-white py-2 px-4 rounded w-full mt-[15px]`}
           >
             {loading ? "Creating Account..." : "Create Account"}
           </button>

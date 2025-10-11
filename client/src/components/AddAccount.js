@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 const accounts = ["Cash", "Crypto", "PayPal", "Visa Debit Card"];
 
 const AddAccount = ({ isOpen, setIsOpen, id, refetch, key }) => {
-  const { user } = useStore((state) => state);
+  const { user, setUser } = useStore((state) => state);
   const {
     register,
     handleSubmit,
@@ -43,6 +43,9 @@ const AddAccount = ({ isOpen, setIsOpen, id, refetch, key }) => {
 
       if (res?.data) {
         toast.success(res?.message);
+        if (res?.user) {
+          setUser(res?.user);
+        }
         setIsOpen(false);
         refetch();
       }

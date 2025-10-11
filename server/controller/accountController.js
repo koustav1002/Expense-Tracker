@@ -73,6 +73,7 @@ const createAccount = async (req, res) => {
       status: "success",
       message: `${savedAccount.account_name} Account created successfully`,
       data: savedAccount,
+      user: user
     });
   } catch (error) {
     console.log(error);
