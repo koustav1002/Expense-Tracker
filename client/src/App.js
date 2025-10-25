@@ -15,6 +15,7 @@ import AccountPage from "./pages/AccountPage";
 import useStore from "./store/index";
 import Navbar from "./components/Navbar";
 import { jwtDecode } from "jwt-decode";
+import { useEffect } from "react";
 
 const RootLayout = () => {
   const { user } = useStore((state) => state);
@@ -38,7 +39,7 @@ const RootLayout = () => {
   ) : (
     <>
       <Navbar />
-      <div className="min-h-[cal(h-screen-100px)]">
+      <div className="min-h-[calc(h-screen-100px)]">
         <Outlet />
       </div>
     </>
@@ -46,10 +47,20 @@ const RootLayout = () => {
 };
 
 function App() {
+  const { theme } = useStore((state) => state);
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+    console.log(document.body.classList);
+  }, [theme]);
   return (
     <BrowserRouter>
       <main>
-        <div className="w-full min-h-screen bg-gray-100 px-10 md:px-20">
+        <div className="w-full min-h-screen bg-gray-100 px-10 md:px-20 dark:bg-slate-900">
           <Routes>
             <Route element={<RootLayout />}>
               <Route path="/" element={<Navigate to="/overview" />} />

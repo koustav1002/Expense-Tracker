@@ -3,10 +3,19 @@ import clsx from "clsx";
 import { FaBars, FaTimes } from "react-icons/fa";
 import menuItems from "../store/menuItems";
 import { Link, useNavigate } from "react-router-dom";
-import { HiOutlineMoon } from "react-icons/hi";
 import { TbLogout2 } from "react-icons/tb";
+import { LuSunMoon } from "react-icons/lu";
+import { IoMoonOutline } from "react-icons/io5";
+import useStore from "../store";
 
 export default function HamburgerMenu({ currentItem, setCurrentItem }) {
+  const { theme, setTheme } = useStore((state) => state);
+  const toggleDarkMode = (e) => {
+    e.preventDefault();
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
   // const [currentItem, setCurrentItem] = useState(0);
   const navigate = useNavigate();
   return (
@@ -25,9 +34,8 @@ export default function HamburgerMenu({ currentItem, setCurrentItem }) {
               {menuItems.map((item) => (
                 <Link to={item.link} key={item._id}>
                   <button
-                    className={`text-gray-700 w-1/2 px-6 py-2 rounded-full text-left ${
-                      item._id === currentItem && "bg-black text-white"
-                    }`}
+                    className={`text-gray-700 w-1/2 px-6 py-2 rounded-full text-left ${item._id === currentItem && "bg-black text-white"
+                      }`}
                     onClick={() => {
                       setCurrentItem(item._id);
                       console.log("hello");
@@ -39,7 +47,10 @@ export default function HamburgerMenu({ currentItem, setCurrentItem }) {
                 </Link>
               ))}
               <div className="flex items-center justify-between py-6 px-4">
-                <HiOutlineMoon size={25} />
+                <button onClick={toggleDarkMode} className="outline-none">
+                  {theme === 'dark' ? (<LuSunMoon size={26} className="text-gray-500" />) : (<IoMoonOutline size={26} className="text-gray-500" />)
+                  }
+                </button>
                 <button
                   onClick={() => {
                     // localStorage.remove('user')

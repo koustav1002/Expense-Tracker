@@ -9,12 +9,12 @@ const RecentTransactions = ({ data }) => {
   return (
     <div className="flex-1 w-full py-20">
       <div className="flex items-center justify-between">
-        <h1 className="text-4xl font-semibold text-black">
+        <h1 className="text-4xl font-semibold text-black dark:text-gray-300">
           Latest Transactions
         </h1>
         <Link
           to="/transactions"
-          className="text-sm text-gray-600 mr-5 hover:text-violet-600 hover:underline"
+          className="text-sm text-gray-600 dark:text-gray-400 hover:text-violet-600 dark:hover:text-violet-400 hover:underline mr-5"
         >
           View All
         </Link>
@@ -22,8 +22,8 @@ const RecentTransactions = ({ data }) => {
 
       <div className="mt-5 overflow-x-auto">
         <table className="w-full">
-          <thead className="w-full border-b border-gray-300">
-            <tr className="w-full text-left text-black">
+          <thead className="w-full border-b border-gray-300 dark:border-gray-700">
+            <tr className="w-full text-left text-black dark:text-gray-400">
               <th className="py-2">Date</th>
               <th className="px-2 py-2">Description</th>
               <th className="px-2 py-2">Status</th>
@@ -36,7 +36,9 @@ const RecentTransactions = ({ data }) => {
             {transactions.map((item, index) => (
               <tr
                 key={index}
-                className="text-sm text-gray-600 border-b border-gray-200 hover:bg-gray-50"
+                className="text-sm text-gray-600 border-b border-gray-200
+                 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-500
+                 dark:hover:bg-gray-700"
               >
                 <td className="py-4">
                   {new Date(item.createdAt).toDateString()}
@@ -44,7 +46,7 @@ const RecentTransactions = ({ data }) => {
 
                 <td className="px-2 py-3">
                   <div className="flex flex-col">
-                    <p className="text-base font-medium text-black line-clamp-1">
+                    <p className="text-base font-medium text-black dark:text-gray-400 line-clamp-1">
                       {item.description}
                     </p>
                   </div>
@@ -69,13 +71,12 @@ const RecentTransactions = ({ data }) => {
                   <p className="line-clamp-1">{item.source}</p>
                 </td>
 
-                <td className="flex items-center px-2 py-4 font-medium text-black">
+                <td className="flex items-center px-2 py-4 font-medium text-black dark:text-gray-400">
                   <span
-                    className={`${
-                      item.type === "income"
-                        ? "text-emerald-600"
-                        : "text-red-600"
-                    }`}
+                    className={`${item.type === "income"
+                      ? "text-emerald-600"
+                      : "text-red-600"
+                      }`}
                   >
                     {item.type === "income" ? "+" : "-"}
                   </span>
