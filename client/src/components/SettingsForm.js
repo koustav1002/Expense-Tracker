@@ -10,23 +10,19 @@ import axios from "axios";
 
 const SettingsForm = () => {
   const { user, setUser } = useStore((state) => state);
-
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm();
-
   const [selectedCountry, setSelectedCountry] = useState(
     { country: user?.country, currency: user?.currency } || ""
   );
 
   const [query, setQuery] = useState("");
-  const [countriesData, setCountriesData] = useState([]);
 
-  const [loading, setLoading] = useState(false);
-
-  const onSubmit = async (values) => {
+  const onSubmit = async (data) => {
     try {
       setLoading(true);
       const config = {
@@ -37,7 +33,7 @@ const SettingsForm = () => {
 
       const URL = "http://127.0.0.1:8000/api-v1/user/";
 
-      const { data: res } = await axios.put(URL, values, config);
+      const { data: res } = await axios.put(URL, data, config);
 
       if (res?.user) {
         const token = user.token;
@@ -48,13 +44,12 @@ const SettingsForm = () => {
         toast.success(res?.message ?? "Updated user information successfully!");
       }
     } catch (error) {
-      console.error("Something went wrong: ", error);
+      console.error("Something went wrong:", error);
       toast.error(error?.response?.data?.message || error.message);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <form className="space-y-5 w-full" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -109,13 +104,12 @@ const SettingsForm = () => {
           />
         </div>
       </div>
-
-      <div className="flex items-center gap-6 justify-end pb-10 border-b-2 border-gray-200">
+      <div className="flex items-center gap-6 justify-end pb-10 border-b-2 border-black dark:border-gray-300">
         <Button
           variant="outline"
           loading={loading}
           type="reset"
-          className="px-6 bg-transparent text-black border-gray-200"
+          className="px-6 bg-white text-black border-gray-300"
         >
           Reset
         </Button>
@@ -123,9 +117,9 @@ const SettingsForm = () => {
           variant="outline"
           loading={loading}
           type="submit"
-          className="px-8 bg-violet-700 text-white"
+          className="px-8 bg-violet-600 text-white"
         >
-          {loading ? <BiLoader className="animate-spin text-white" /> : "Save"}
+          {loading ? <BiLoader className="animate-spin text-black" /> : "Save"}
         </Button>
       </div>
     </form>

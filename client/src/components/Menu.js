@@ -10,9 +10,8 @@ const Menu = ({ currentItem, setCurrentItem }) => {
       {menuItems.map((item) => (
         <div
           key={item._id}
-          className={`text-gray-700 px-6 py-2 ${
-            item.link === pathname && "bg-black text-white rounded-full"
-          }`}
+          className={`px-6 py-2 ${item.link === pathname && "bg-black dark:bg-gray-500 rounded-full"
+            } ${item.link === pathname ? "text-white" : "text-gray-500"}`}
         >
           <Link to={item.link}>{item.title}</Link>
         </div>

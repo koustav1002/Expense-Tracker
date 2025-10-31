@@ -11,37 +11,36 @@ const ViewTransaction = ({ data, isOpen, setIsOpen }) => {
   const longDateString = new Date(data?.createdAt).toLocaleDateString("en-US", {
     dateStyle: "full",
   });
-  
+
   return (
     <DialogWrapper isOpen={isOpen} closeModal={closeModal}>
-      <DialogPanel className="w-full max-w-md tranform overflow-hidden rounded-2xl bg-white p-6 align-baseline">
+      <DialogPanel className="w-full max-w-md tranform overflow-hidden rounded-2xl dark:bg-slate-900 shadow-2xl dark:shadow-gray-800 bg-white p-6 align-baseline">
         <DialogTitle
           as="h3"
-          className="text-lg font-medium leading-6 text-gray-900 mb-4 uppercase"
+          className="text-lg font-medium leading-6 text-gray-900 dark:text-white mb-4 uppercase"
         >
           Transaction Detail
         </DialogTitle>
 
         <div className="space-y-3">
-          <div className="flex items-center gap-2 text-gray-600 border-y border-gray-300">
-            <p>{data?.source}</p>
+          <div className="flex items-center py-2 gap-2 text-gray-600 border-y border-gray-300">
+            <p className="text-gray-400">{data?.source}</p>
             <PiSealCheckFill size={30} className="text-emerald-600 ml-4" />
           </div>
         </div>
 
-        <div className="mb-10">
-          <p className="text-xl text-black">{data?.description}</p>
-          <span className="text-xs text-gray-600">
+        <div className="mb-10 mt-3">
+          <p className="text-xl text-black dark:text-gray-300">{data?.description}</p>
+          <span className="text-xs text-gray-500">
             {longDateString}
           </span>
         </div>
 
         <div className="mt-10 mb-3 flex justify-between">
-          <p className="text-black text-2xl font-bold">
+          <p className="text-black dark:text-white text-2xl font-bold">
             <span
-              className={`${
-                data?.income === "income" ? "text-emerald-600" : "text-red-600"
-              } font-bold mgl-1`}
+              className={`${data?.income === "income" ? "text-emerald-600" : "text-red-600"
+                } font-bold mgl-1`}
             >
               {data?.type === "income" ? "+" : "-"}
             </span>{" "}

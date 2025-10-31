@@ -9,7 +9,6 @@ import axios from "axios";
 
 const ChangePassword = () => {
   const [loading, setLoading] = useState(false);
-
   const {
     register,
     handleSubmit,
@@ -42,7 +41,9 @@ const ChangePassword = () => {
     <div className="py-20">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-6">
-          <p className="text-xl font-bold text-black">Change Password</p>
+          <p className="text-2xl 2xl:text-3xl font-semibold text-gray-600 dark:text-gray-300 mb-5">
+            Change Password
+          </p>
           <span className="labelStyles">
             This will be used to log into your account and complete high
             severity actions.
@@ -55,7 +56,7 @@ const ChangePassword = () => {
               name="currentPassword"
               label="Current Password"
               {...register("currentPassword", {
-                required: "Current Password is required!"
+                required: "Current Password is required!",
               })}
             />
 
@@ -65,7 +66,7 @@ const ChangePassword = () => {
               name="newPassword"
               label="New Password"
               {...register("newPassword", {
-                required: "New Password is required!"
+                required: "New Password is required!",
               })}
             />
 
@@ -75,17 +76,17 @@ const ChangePassword = () => {
               name="confirmPassword"
               label="Confirm Password"
               {...register("confirmPassword", {
-                required: "You need to confirm the new password"
+                required: "Confirm the new password!",
               })}
             />
           </div>
 
-          <div className="flex items-center gap-6 justify-end pb-10 border-b-2 border-gray-200">
+          <div className="flex items-center gap-6 justify-end pb-10 border-b-2 border-black dark:border-gray-300">
             <Button
               variant="outline"
               loading={loading}
               type="reset"
-              className="px-6 bg-transparent text-black border-gray-200"
+              className="px-6 bg-white text-black border-gray-200"
             >
               Reset
             </Button>
@@ -93,10 +94,10 @@ const ChangePassword = () => {
               variant="outline"
               loading={loading}
               type="submit"
-              className="px-8 bg-blue-700 text-white"
+              className="px-8 bg-violet-600 text-white"
             >
               {loading ? (
-                <BiLoader className="animate-spin text-white" />
+                <BiLoader className="animate-spin text-black" />
               ) : (
                 "Save"
               )}

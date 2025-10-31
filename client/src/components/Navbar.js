@@ -26,7 +26,7 @@ const Navbar = () => {
           <div className="w-10 md:w-12 h-10 md:h-12 flex items-center justify-center rounded-xl bg-violet-700">
             <GrMoney className="text-white hover:animate-spin" size={25} />
           </div>
-          <span className="text-xl font-bold text-black dark:text-gray-300">My-Finance</span>
+          <span className="text-xl font-bold text-black dark:text-white">My-Finance</span>
         </div>
       </Link>
       <Menu currentItem={currentItem} setCurrentItem={setCurrentItem} />
@@ -38,7 +38,7 @@ const Navbar = () => {
         <UserDropdown />
       </div>
 
-      <div className="flex md:hidden">
+      <div className="flex dark:text-white md:hidden">
         <HamburgerMenu
           currentItem={currentItem}
           setCurrentItem={setCurrentItem}

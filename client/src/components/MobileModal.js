@@ -2,7 +2,7 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import clsx from "clsx";
 import { FaBars, FaTimes } from "react-icons/fa";
 import menuItems from "../store/menuItems";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TbLogout2 } from "react-icons/tb";
 import { LuSunMoon } from "react-icons/lu";
 import { IoMoonOutline } from "react-icons/io5";
@@ -10,6 +10,8 @@ import useStore from "../store";
 
 export default function HamburgerMenu({ currentItem, setCurrentItem }) {
   const { theme, setTheme } = useStore((state) => state);
+  const { pathname } = useLocation();
+
   const toggleDarkMode = (e) => {
     e.preventDefault();
     const newTheme = theme === "light" ? "dark" : "light";
@@ -34,11 +36,9 @@ export default function HamburgerMenu({ currentItem, setCurrentItem }) {
               {menuItems.map((item) => (
                 <Link to={item.link} key={item._id}>
                   <button
-                    className={`text-gray-700 w-1/2 px-6 py-2 rounded-full text-left ${item._id === currentItem && "bg-black text-white"
+                    className={`text-gray-700 w-1/2 px-6 py-2 rounded-full text-left ${item.link === pathname && "bg-black text-white"
                       }`}
                     onClick={() => {
-                      setCurrentItem(item._id);
-                      console.log("hello");
                       close();
                     }}
                   >

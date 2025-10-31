@@ -129,14 +129,14 @@ const AccountPage = () => {
                 {data?.map((acc, index) => (
                   <div
                     key={index}
-                    className="w-full h-48 flex gap-4 bg-gray-50 p-3 rounded shadow"
+                    className="w-full h-48 flex gap-4 bg-gray-50 p-3 rounded shadow-lg dark:bg-transparent dark:shadow-gray-800"
                   >
                     <div>{ICONS[acc?.account_name?.toLowerCase()]}</div>
 
                     <div className="space-y-2 w-full">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center">
-                          <p className="text-black text-2xl font-bold">
+                          <p className="text-black text-2xl font-bold dark:text-gray-400">
                             {acc?.account_name}
                           </p>
 
@@ -151,18 +151,18 @@ const AccountPage = () => {
                         />
                       </div>
 
-                      <span className="text-gray-600 font-light leading-loose">
+                      <span className="text-gray-600 font-light leading-loose dark:text-gray-500">
                         {maskAccount(acc?.account_number)}
                       </span>
 
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-gray-600 dark:text-gray-500">
                         {new Date(acc?.createdAt).toLocaleDateString("en-US", {
                           dateStyle: "full",
                         })}
                       </p>
 
                       <div className="flex items-center justify-between">
-                        <p className="text-xl text-gray-600 font-medium">
+                        <p className="text-xl text-gray-600 font-medium dark:text-gray-400">
                           {Number(acc?.account_balance.$numberDecimal).toLocaleString()}
                         </p>
                         <button
@@ -195,7 +195,7 @@ const AccountPage = () => {
             key={new Date().getTime() + 1}
           />
 
-          <TransferMoney isOpen={isOpenTransfer} setIsOpen={setIsOpenTransfer} id={selectedAccount} refetch={fetchAccount} key={new Date().getTime() + 2}/>
+          <TransferMoney isOpen={isOpenTransfer} setIsOpen={setIsOpenTransfer} id={selectedAccount} refetch={fetchAccount} key={new Date().getTime() + 2} />
         </>
       )}
     </>

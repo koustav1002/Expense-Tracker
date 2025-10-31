@@ -100,10 +100,10 @@ const AddTransaction = ({ isOpen, setIsOpen, refetch }) => {
   }, []);
   return (
     <DialogWrapper isOpen={isOpen} closeModal={closeModal}>
-      <DialogPanel className="w-full max-w-md tranform overflow-hidden rounded-2xl bg-white p-6 align-baseline">
+      <DialogPanel className="w-full max-w-md tranform overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-2xl dark:shadow-gray-800 p-6 align-baseline">
         <DialogTitle
           as="h3"
-          className="text-lg font-medium leading-6 text-gray-900 mb-4 uppercase"
+          className="text-lg font-medium leading-6 text-gray-900 dark:text-white mb-4 uppercase"
         >
           Add Transaction
         </DialogTitle>
@@ -113,7 +113,7 @@ const AddTransaction = ({ isOpen, setIsOpen, refetch }) => {
         ) : (
           <form onSubmit={handleSubmit(submitHandler)} className="spac-y-6">
             <div className="flex flex-col gap-1 mb-2">
-              <p className="text-gray-700 text-sm mb-2">Select Account</p>
+              <p className="text-gray-500 text-sm mb-2">Select Account</p>
 
               <select
                 onChange={(e) => getAccountBalance(e.target.value)}

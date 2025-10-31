@@ -46,19 +46,19 @@ const DateRange = () => {
   };
   return <div className="flex items-center gap-2">
     <div className="flex items-center gap-1">
-        <label className="block text-gray-700 text-sm mb-2" htmlFor="dateFrom">
-            Filter
-        </label>
+      <label className="block text-gray-500 text-sm mb-2" htmlFor="dateFrom">
+        Filter
+      </label>
 
-        <input className="inputStyles" name='dateFrom' type='date' maxDate={dateTo} value={dateFrom} onChange={handleDateFromChange}/>
+      <input className="inputStyles" name='dateFrom' type='date' maxDate={dateTo} value={dateFrom} onChange={handleDateFromChange} />
     </div>
 
     <div className="flex items-center gap-1">
-        <label className="block text-gray-700 text-sm mb-2" htmlFor='dateFrom'>
-            To
-        </label>
+      <label className="block text-gray-500 text-sm mb-2" htmlFor='dateFrom'>
+        To
+      </label>
 
-        <input className="inputStyles" name='dateFrom' type={'date'} value={dateTo} min={dateFrom} onChange={handleDateToChange}/>
+      <input className="inputStyles" name='dateFrom' type={'date'} value={dateTo} min={dateFrom} onChange={handleDateToChange} />
     </div>
   </div>;
 };
