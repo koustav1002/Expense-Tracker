@@ -11,7 +11,7 @@ const ViewTransaction = ({ data, isOpen, setIsOpen }) => {
   const longDateString = new Date(data?.createdAt).toLocaleDateString("en-US", {
     dateStyle: "full",
   });
-
+  
   return (
     <DialogWrapper isOpen={isOpen} closeModal={closeModal}>
       <DialogPanel className="w-full max-w-md tranform overflow-hidden rounded-2xl dark:bg-slate-900 shadow-2xl dark:shadow-gray-800 bg-white p-6 align-baseline">

@@ -30,14 +30,14 @@ export default function HamburgerMenu({ currentItem, setCurrentItem }) {
           </PopoverButton>
           <PopoverPanel
             anchor="bottom"
-            className="absolute left-0 -translate-x-1 z-50 bg-white shadow-lg mt-3 w-[384px] rounded-lg  px-4 py-6 opacity-100 scale-100 "
+            className="absolute left-0 -translate-x-1 z-50 bg-white shadow-xl mt-3 w-[384px] rounded-lg  px-4 py-6 opacity-100 scale-100 dark:bg-slate-900 dark:shadow-[0_0_20px_4px_rgba(31,41,55,0.6)]"
           >
             <div className="flex flex-col space-y-2">
               {menuItems.map((item) => (
                 <Link to={item.link} key={item._id}>
                   <button
-                    className={`text-gray-700 w-1/2 px-6 py-2 rounded-full text-left ${item.link === pathname && "bg-black text-white"
-                      }`}
+                    className={`text-gray-700 w-1/2 px-6 py-2 ${item.link === pathname && "bg-black dark:bg-gray-600 rounded-full"
+                      } text-left ${item.link === pathname ? "text-white" : "text-gray-400"}`}
                     onClick={() => {
                       close();
                     }}
@@ -56,6 +56,7 @@ export default function HamburgerMenu({ currentItem, setCurrentItem }) {
                     // localStorage.remove('user')
                     navigate("/sign-in");
                   }}
+                  className="dark:text-gray-500"
                 >
                   <TbLogout2 size={25} />
                 </button>

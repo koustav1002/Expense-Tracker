@@ -66,10 +66,10 @@ const AddAccount = ({ isOpen, setIsOpen, id, refetch, key }) => {
   }, []);
   return (
     <DialogWrapper isOpen={isOpen} closeModal={closeModal}>
-      <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+      <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle dark:bg-slate-900 shadow-2xl dark:shadow-gray-800 transition-all">
         <DialogTitle
           as="h3"
-          className="text-lg font-medium leading-6 text-gray-900 mb-4 uppercase"
+          className="text-lg font-medium leading-6 text-gray-900 dark:text-white mb-4 uppercase"
         >
           Add Account
         </DialogTitle>
@@ -79,7 +79,7 @@ const AddAccount = ({ isOpen, setIsOpen, id, refetch, key }) => {
             <p className="text-gray-600 text-sm mb-2">Select Account</p>
             <select
               onChange={(e) => setSelectedAccount(e.target.value)}
-              className="bg-transparent appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-700 outline-none focus:ring-1 ring-blue-500"
+              className="bg-transparent appearance-none border border-gray-300 rounded w-full py-2 px-3 text-gray-500 outline-none focus:ring-1 ring-blue-500"
             >
               {accounts.map((acc, index) => (
                 <option

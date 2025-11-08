@@ -48,10 +48,10 @@ const AddMoney = ({ isOpen, setIsOpen, id, refetch }) => {
   }
   return (
     <DialogWrapper isOpen={isOpen} closeModal={closeModal}>
-      <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+      <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle dark:bg-slate-900 shadow-2xl dark:shadow-gray-800 transition-all">
         <DialogTitle
           as="h3"
-          className="text-lg font-medium leading-6 text-gray-900 mb-4 uppercase"
+          className="text-lg font-medium leading-6 text-gray-900 dark:text-white mb-4 uppercase"
         >
           Add Money to Account
         </DialogTitle>
