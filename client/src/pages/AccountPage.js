@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import { MdAdd, MdVerifiedUser } from "react-icons/md";
 import AccountMenu from "../components/AccountMenu";
-import { maskAccount } from "../store/utils";
+import { baseURL, maskAccount } from "../store/utils";
 import AddAccount from "../components/AddAccount";
 import AddMoney from "../components/AddAccountMoney";
 import TransferMoney from "../components/TransferMoney";
@@ -64,7 +64,7 @@ const AccountPage = () => {
         },
       };
 
-      const URL = "http://127.0.0.1:8000/api-v1/account/";
+      const URL = `${baseURL}/api-v1/account/`;
       const { data: res } = await axios.get(URL, config);
 
       setData(res?.data);

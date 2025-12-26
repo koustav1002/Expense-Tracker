@@ -34,3 +34,5 @@ export const getDateSevenDaysAgo = () => {
 export const getAccessToken = () => {
   return localStorage.getItem("token");
 };
+
+export const baseURL = "https://expense-tracker-an8d.onrender.com";

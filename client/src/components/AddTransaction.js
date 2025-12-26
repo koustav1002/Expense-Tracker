@@ -39,7 +39,7 @@ const AddTransaction = ({ isOpen, setIsOpen, refetch }) => {
       };
 
       const { data: res } = await axios.post(
-        `http://127.0.0.1:8000/api-v1/transactions/add-transaction/${accountInfo._id}`,
+        `https://expense-tracker-an8d.onrender.com/api-v1/transactions/add-transaction/${accountInfo._id}`,
         newData,
         config
       );
@@ -83,7 +83,7 @@ const AddTransaction = ({ isOpen, setIsOpen, refetch }) => {
       };
 
       const { data: res } = await axios.get(
-        "http://127.0.0.1:8000/api-v1/account",
+        "https://expense-tracker-an8d.onrender.com/api-v1/account",
         config
       );
       setAccountData(res?.data);

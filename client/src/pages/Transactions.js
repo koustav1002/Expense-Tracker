@@ -11,7 +11,7 @@ import { RiProgress3Line } from "react-icons/ri";
 import { TiWarning } from "react-icons/ti";
 import ViewTransaction from "../components/ViewTransaction";
 import AddTransaction from "../components/AddTransaction";
-import { getAccessToken } from "../store/utils";
+import { baseURL, getAccessToken } from "../store/utils";
 
 const Transactions = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -33,7 +33,7 @@ const Transactions = () => {
 
   const fetchTransactions = async () => {
     try {
-      const URL = `http://127.0.0.1:8000/api-v1/transactions?df=${startDate}&dt=${endDate}&s=${search}`;
+      const URL = `${baseURL}/api-v1/transactions?df=${startDate}&dt=${endDate}&s=${search}`;
 
       const config = {
         headers: {

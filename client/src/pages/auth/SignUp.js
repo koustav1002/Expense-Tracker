@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useStore from "../../store";
+import { baseURL } from "../../store/utils";
 
 function SignUp() {
   const { setUser } = useStore((state) => state);
@@ -26,7 +27,7 @@ function SignUp() {
         },
       };
       const { data } = await axios.post(
-        "http://127.0.0.1:8000/api-v1/auth/sign-up",
+        `${baseURL}/api-v1/auth/sign-up`,
         {
           firstName: name,
           lastName: "dummy_lastname",

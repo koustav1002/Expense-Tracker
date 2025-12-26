@@ -26,7 +26,7 @@ const AddMoney = ({ isOpen, setIsOpen, id, refetch }) => {
         },
       };
 
-      const URL = `http://127.0.0.1:8000/api-v1/account/add-money/${id}`;
+      const URL = `https://expense-tracker-an8d.onrender.com/api-v1/account/add-money/${id}`;
 
       const { data: res } = await axios.put(URL, data, config);
 

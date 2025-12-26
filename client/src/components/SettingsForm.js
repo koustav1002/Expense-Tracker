@@ -5,6 +5,7 @@ import { Button } from "./ui/Button";
 import { BiLoader } from "react-icons/bi";
 import { useForm } from "react-hook-form";
 import { getAccessToken } from "../store/utils";
+import { baseURL } from "../store/utils";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -31,7 +32,7 @@ const SettingsForm = () => {
         },
       };
 
-      const URL = "http://127.0.0.1:8000/api-v1/user/";
+      const URL = `${baseURL}/api-v1/user/`;
 
       const { data: res } = await axios.put(URL, data, config);
 

@@ -37,7 +37,7 @@ const AddAccount = ({ isOpen, setIsOpen, id, refetch, key }) => {
         },
       };
 
-      const URL = "http://127.0.0.1:8000/api-v1/account/create";
+      const URL = "https://expense-tracker-an8d.onrender.com/api-v1/account/create";
 
       const { data: res } = await axios.post(URL, newData, config);
 

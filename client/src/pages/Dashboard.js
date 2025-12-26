@@ -7,14 +7,14 @@ import Stats from "../components/Stats";
 import Chart from "../components/Chart";
 import DoughnutChart from "../components/PieChart";
 import RecentTransactions from "../components/RecentTransactions";
-import { getAccessToken } from "../store/utils";
+import { baseURL, getAccessToken } from "../store/utils";
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchDashboardStats = async () => {
-    const URL = "http://127.0.0.1:8000/api-v1/transactions/dashboard";
+    const URL = `${baseURL}/api-v1/transactions/dashboard`;
     try {
       const config = {
         headers: {

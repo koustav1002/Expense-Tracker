@@ -10,6 +10,7 @@ import { DialogPanel, DialogTitle } from "@headlessui/react";
 import { BiLoader } from "react-icons/bi";
 import { Button } from "./ui/Button";
 import { getAccessToken } from   "../store/utils";
+import { baseURL } from "../store/utils";
 
 const TransferMoney = ({ isOpen, setIsOpen, refetch }) => {
   const { user } = useStore((state) => state);
@@ -41,7 +42,7 @@ const TransferMoney = ({ isOpen, setIsOpen, refetch }) => {
         },
       };
 
-      const URL = "http://127.0.0.1:8000/api-v1/transactions/transfer-money";
+      const URL = `${baseURL}/api-v1/transactions/transfer-money`;
 
       const { data: res } = await axios.put(
         URL,
@@ -82,7 +83,7 @@ const TransferMoney = ({ isOpen, setIsOpen, refetch }) => {
         },
       };
 
-      const URL = "http://127.0.0.1:8000/api-v1/account/";
+      const URL = `${baseURL}/api-v1/account/`;
       
       const { data: res } = await axios.get(URL, config);
 
