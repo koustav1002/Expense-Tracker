@@ -90,7 +90,7 @@ const Transactions = () => {
               </p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 md: pt-4">
               <button
                 onClick={() => setIsOpen(true)}
                 className="py-1.5 px-2 rounded bg-black text-white flex items-center justify-center gap-2 border border-gray-500"
