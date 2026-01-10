@@ -20,7 +20,7 @@ const Settings = () => {
             Profile Information
           </p>
           <div className="flex items-center gap-4 my-8">
-            <div className="flex items-center justify-center w-12 h-12 text-black rounded-full cursor-pointer bg-violet-600">
+            <div className="flex items-center justify-center w-12 h-12 text-white rounded-full cursor-pointer bg-violet-600">
               <p>{user?.firstName?.charAt(0)}</p>
             </div>
             <p className="text-2xl 2xl:text-2xl font-semibold text-gray-500">
